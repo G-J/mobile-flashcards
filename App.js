@@ -1,19 +1,53 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  Container,
+  Header,
+  Text,
+  Title,
+  Footer,
+  FooterTab,
+  Content,
+  Body,
+  Button,
+  Icon,
+  Card,
+  CardItem
+} from 'native-base';
+import { Platform } from 'react-native';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Container>
+      <Header>
+        <Title>Flashin'</Title>
+      </Header>
+      <Content padder>
+        <Card>
+          <CardItem header>
+            <Text>Deck title</Text>
+          </CardItem>
+          <CardItem>
+            <Body>
+              <Text>2 cards</Text>
+            </Body>
+          </CardItem>
+        </Card>
+      </Content>
+      <Footer>
+        <FooterTab>
+          <Button>
+            <Icon name={Platform.OS === 'ios' ? 'ios-apps': 'apps'} />
+            <Text>Decks</Text>
+          </Button>
+        </FooterTab>
+        <FooterTab>
+          <Button>
+            <Icon name={Platform.OS === 'ios' ? 'ios-add': 'add'} />
+            <Text>Add Deck</Text>
+          </Button>
+        </FooterTab>
+      </Footer>
+    </Container >
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
