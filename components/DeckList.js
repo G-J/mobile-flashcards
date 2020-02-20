@@ -16,7 +16,7 @@ class DeckList extends Component {
 
     render() {
         const { decks } = this.props;
-        console.log(decks);
+    
         return (
             <Content padder>
                 {Object.keys(decks).length
