@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Card, CardItem, Body, Text, View } from 'native-base';
 import { receiveDecks } from '../actions';
 import { getDecks } from '../utils/api';
+import DeckCard from './DeckCard';
 
 class DeckList extends Component {
     componentDidMount() {
@@ -21,16 +22,10 @@ class DeckList extends Component {
             <View>
                 {
                     Object.keys(decks).length
-                        ? <Card>
-                            <CardItem header>
-                                <Text>Deck title</Text>
-                            </CardItem>
-                            <CardItem>
-                                <Body>
-                                    <Text>2 cards</Text>
-                                </Body>
-                            </CardItem>
-                        </Card>
+                        ? <DeckCard
+                            title="Deck Title"
+                            total={2}
+                        />
                         : <Text>No decks yet. Create one!</Text>
                 }
             </View>

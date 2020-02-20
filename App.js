@@ -15,7 +15,8 @@ import {
 } from 'native-base';
 import { Platform } from 'react-native';
 // import DeckList from './components/DeckList';
-import NewDeck from './components/NewDeck';
+// import NewDeck from './components/NewDeck';
+import Deck from './components/Deck';
 
 class App extends Component {
   componentDidMount() {
@@ -36,7 +37,8 @@ class App extends Component {
           </Header>
           <Content padder>
             {/* <DeckList /> */}
-            <NewDeck />
+            {/* <NewDeck /> */}
+            <Deck />
           </Content>
           <Footer>
             <FooterTab>
