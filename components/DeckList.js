@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Content, Card, CardItem, Body, Text } from 'native-base';
+import { Card, CardItem, Body, Text, View } from 'native-base';
 import { receiveDecks } from '../actions';
 import { getDecks } from '../utils/api';
 
@@ -16,24 +16,24 @@ class DeckList extends Component {
 
     render() {
         const { decks } = this.props;
-    
-        return (
-            <Content padder>
-                {Object.keys(decks).length
-                    ? <Card>
-                        <CardItem header>
-                            <Text>Deck title</Text>
-                        </CardItem>
-                        <CardItem>
-                            <Body>
-                                <Text>2 cards</Text>
-                            </Body>
-                        </CardItem>
-                    </Card>
-                    : <Text>No decks yet. Create one!</Text>
-                }
 
-            </Content>
+        return (
+            <View>
+                {
+                    Object.keys(decks).length
+                        ? <Card>
+                            <CardItem header>
+                                <Text>Deck title</Text>
+                            </CardItem>
+                            <CardItem>
+                                <Body>
+                                    <Text>2 cards</Text>
+                                </Body>
+                            </CardItem>
+                        </Card>
+                        : <Text>No decks yet. Create one!</Text>
+                }
+            </View>
         )
     }
 }

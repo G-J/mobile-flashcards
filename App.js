@@ -5,6 +5,7 @@ import reducer from './reducers';
 import {
   Container,
   Header,
+  Content,
   Text,
   Title,
   Footer,
@@ -13,7 +14,8 @@ import {
   Icon
 } from 'native-base';
 import { Platform } from 'react-native';
-import DeckList from './components/DeckList';
+// import DeckList from './components/DeckList';
+import NewDeck from './components/NewDeck';
 
 class App extends Component {
   componentDidMount() {
@@ -32,12 +34,15 @@ class App extends Component {
           <Header>
             <Title>Flashin'</Title>
           </Header>
-          <DeckList />
+          <Content padder>
+            {/* <DeckList /> */}
+            <NewDeck />
+          </Content>
           <Footer>
             <FooterTab>
-              <Button>
-                <Icon name={Platform.OS === 'ios' ? 'ios-apps' : 'apps'} />
-                <Text>Decks</Text>
+            <Button>
+                <Icon name={Platform.OS === 'ios' ? 'ios-home' : 'home'} />
+                <Text>Home</Text>
               </Button>
             </FooterTab>
             <FooterTab>
