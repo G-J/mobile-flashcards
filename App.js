@@ -17,7 +17,8 @@ import { Platform } from 'react-native';
 // import DeckList from './components/DeckList';
 // import NewDeck from './components/NewDeck';
 // import Deck from './components/Deck';
-import NewCard from './components/NewCard';
+// import NewCard from './components/NewCard';
+import Quiz from './components/Quiz';
 
 class App extends Component {
   render() {
@@ -36,7 +37,8 @@ class App extends Component {
             {/* <DeckList /> */}
             {/* <NewDeck /> */}
             {/* <Deck /> */}
-            <NewCard />
+            {/* <NewCard /> */}
+            <Quiz />
           </Content>
           <Footer>
             <FooterTab>
