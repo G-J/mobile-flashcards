@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { Form, Item, Title, View, Label, Input, Button, Text, Icon } from 'native-base';
+import {globalStyles} from '../assets/styles/globalStyles';
 
 class NewDeck extends Component {
     render() {
@@ -14,8 +15,8 @@ class NewDeck extends Component {
                         <Input />
                     </Item>
                 </Form>
-                <Button iconRight style={{ marginTop: 40 }}>
-                    <Text>Create deck!</Text>
+                <Button iconRight style={globalStyles.button}>
+                    <Text>Create deck</Text>
                     <Icon name={Platform.OS === 'ios' ? 'ios-arrow-forward' : 'arrow-forward'} />
                 </Button>
             </View>

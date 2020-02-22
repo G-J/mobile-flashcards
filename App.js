@@ -16,13 +16,10 @@ import {
 import { Platform } from 'react-native';
 // import DeckList from './components/DeckList';
 // import NewDeck from './components/NewDeck';
-import Deck from './components/Deck';
+// import Deck from './components/Deck';
+import NewCard from './components/NewCard';
 
 class App extends Component {
-  componentDidMount() {
-
-  }
-
   render() {
     const store = createStore(
       reducer,
@@ -38,7 +35,8 @@ class App extends Component {
           <Content padder>
             {/* <DeckList /> */}
             {/* <NewDeck /> */}
-            <Deck />
+            {/* <Deck /> */}
+            <NewCard />
           </Content>
           <Footer>
             <FooterTab>
