@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardItem, Body, Text, View } from 'native-base';
+import { Card, CardItem, Body, Text, View, Button } from 'native-base';
 import { receiveDecks } from '../actions';
 import { getDecks } from '../utils/api';
 import DeckCard from './DeckCard';
@@ -21,8 +21,7 @@ class DeckList extends Component {
     }
 
     render() {
-        const { decks, subjects } = this.props;
-
+        const { decks, subjects, navigation } = this.props;
         return (
             <View>
                 {
@@ -35,7 +34,16 @@ class DeckList extends Component {
                                 handlePress={this.onCardPress}
                             />
                         ))
-                        : <Text>No decks yet. Create one!</Text>
+                        : 
+                        <View>
+                            <Text>No decks yet.</Text>
+                            <Button
+                                onPress={() => navigation.navigate('NewCard', {title: 'React'})}
+                            >
+                                <Text>Create one!</Text>
+                            </Button>
+                        </View>
+
                 }
             </View>
         )
