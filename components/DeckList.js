@@ -4,6 +4,7 @@ import { Card, CardItem, Body, Text, View } from 'native-base';
 import { receiveDecks } from '../actions';
 import { getDecks } from '../utils/api';
 import DeckCard from './DeckCard';
+import { NavigationContainer } from '@react-navigation/native';
 
 class DeckList extends Component {
     componentDidMount() {
@@ -15,17 +16,25 @@ class DeckList extends Component {
             })
     }
 
+    onCardPress = (title) => {
+        this.props.navigation.navigate('Deck',{ title });
+    }
+
     render() {
-        const { decks } = this.props;
+        const { decks, subjects } = this.props;
 
         return (
             <View>
                 {
-                    Object.keys(decks).length
-                        ? <DeckCard
-                            title="Deck Title"
-                            total={2}
-                        />
+                    subjects.length
+                        ? subjects.map((subject) => (
+                            <DeckCard
+                                key={subject}
+                                title={decks[subject].title}
+                                total={decks[subject].questions.length}
+                                handlePress={this.onCardPress}
+                            />
+                        ))
                         : <Text>No decks yet. Create one!</Text>
                 }
             </View>
@@ -34,7 +43,10 @@ class DeckList extends Component {
 }
 
 function mapStateToProps(decks) {
+    const subjects = Object.keys(decks);
+
     return {
+        subjects,
         decks
     }
 }

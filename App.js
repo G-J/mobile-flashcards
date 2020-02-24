@@ -14,11 +14,15 @@ import {
   Icon
 } from 'native-base';
 import { Platform } from 'react-native';
-// import DeckList from './components/DeckList';
-// import NewDeck from './components/NewDeck';
-// import Deck from './components/Deck';
-// import NewCard from './components/NewCard';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack';
+import NewDeck from './components/NewDeck';
+import Deck from './components/Deck';
+import NewCard from './components/NewCard';
 import Quiz from './components/Quiz';
+import DeckList from './components/DeckList';
+
+const Stack = createStackNavigator();
 
 class App extends Component {
   render() {
@@ -30,19 +34,37 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Container>
-          <Header>
-            <Title>Flashin'</Title>
-          </Header>
-          <Content padder>
-            {/* <DeckList /> */}
-            {/* <NewDeck /> */}
-            {/* <Deck /> */}
-            {/* <NewCard /> */}
-            <Quiz />
-          </Content>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="DeckList">
+              <Stack.Screen
+                name="DeckList"
+                component={DeckList}
+                options={{
+                  title: 'Flashing Cards'
+                }}
+              />
+              <Stack.Screen
+                name="Quiz"
+                component={Quiz}
+              />
+              <Stack.Screen
+                name="Deck"
+                component={Deck}
+              />
+              <Stack.Screen
+                name="NewCard"
+                component={NewCard}
+                options={{
+                  title: 'Add Card'
+                }}
+              />
+              {/* <NewDeck /> */}
+              {/* <NewCard /> */}
+            </Stack.Navigator>
+          </NavigationContainer>
           <Footer>
             <FooterTab>
-            <Button>
+              <Button>
                 <Icon name={Platform.OS === 'ios' ? 'ios-home' : 'home'} />
                 <Text>Home</Text>
               </Button>

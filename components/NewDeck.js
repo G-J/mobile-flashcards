@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Platform } from 'react-native';
 import { connect } from 'react-redux';
-import { Form, Item, Title, View, Label, Input, Button, Text, Icon } from 'native-base';
-import {globalStyles} from '../assets/styles/globalStyles';
+import { Form, Item, Title, Label, Input, Button, Text, Icon, Content } from 'native-base';
+import { globalStyles } from '../assets/styles/globalStyles';
 
 class NewDeck extends Component {
     render() {
         return (
-            <View>
+            <Content padder>
                 <Title>What is the title of your new deck?</Title>
                 <Form>
                     <Item stackedLabel last>
@@ -19,7 +19,7 @@ class NewDeck extends Component {
                     <Text>Create deck</Text>
                     <Icon name={Platform.OS === 'ios' ? 'ios-arrow-forward' : 'arrow-forward'} />
                 </Button>
-            </View>
+            </Content>
         )
     }
 }
