@@ -15,13 +15,12 @@ import {
 } from 'native-base';
 import { Platform } from 'react-native';
 // import DeckList from './components/DeckList';
-import NewDeck from './components/NewDeck';
+// import NewDeck from './components/NewDeck';
+// import Deck from './components/Deck';
+// import NewCard from './components/NewCard';
+import Quiz from './components/Quiz';
 
 class App extends Component {
-  componentDidMount() {
-
-  }
-
   render() {
     const store = createStore(
       reducer,
@@ -36,7 +35,10 @@ class App extends Component {
           </Header>
           <Content padder>
             {/* <DeckList /> */}
-            <NewDeck />
+            {/* <NewDeck /> */}
+            {/* <Deck /> */}
+            {/* <NewCard /> */}
+            <Quiz />
           </Content>
           <Footer>
             <FooterTab>
