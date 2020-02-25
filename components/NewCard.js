@@ -3,7 +3,6 @@ import { Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { View, Title, Form, Item, Label, Input, Textarea, Button, Text, Icon } from 'native-base';
 import { addCard } from '../actions';
-import { setCard } from '../utils/api';
 import { globalStyles } from '../assets/styles/globalStyles';
 
 class NewCard extends Component {
@@ -27,14 +26,6 @@ class NewCard extends Component {
             },
             deck: title
         }));
-        setCard({
-            card :{
-                question,
-                answer
-            },
-            deck: title
-        });
-
     }
 
     handleInput = (value, name) => {
