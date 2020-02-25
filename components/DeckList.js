@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, View, Button } from 'native-base';
+import { Platform } from 'react-native';
+import { Text, View, Button, Fab, Icon } from 'native-base';
 import { handleInitialData } from '../actions';
 import DeckCard from './DeckCard';
 
@@ -16,7 +17,7 @@ class DeckList extends Component {
     render() {
         const { decks, subjects, navigation } = this.props;
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 {
                     subjects.length
                         ? subjects.map((subject) => (
@@ -38,6 +39,14 @@ class DeckList extends Component {
                         </View>
 
                 }
+                <Fab
+                    active={true}
+                    direction='up'
+                    position='bottomRight'
+                    onPress={() => navigation.navigate('NewDeck')}
+                >
+                    <Icon name={Platform.OS === 'ios' ? 'ios-add' : 'add'}></Icon>
+                </Fab>
             </View>
         )
     }
