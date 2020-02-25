@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
+import middleware from './middleware';
 import {
   Container,
   Header,
@@ -26,10 +27,7 @@ const Stack = createStackNavigator();
 
 class App extends Component {
   render() {
-    const store = createStore(
-      reducer,
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+    const store = createStore(reducer, middleware);
 
     return (
       <Provider store={store}>
@@ -50,6 +48,7 @@ class App extends Component {
               <Stack.Screen
                 name="Deck"
                 component={Deck}
+                options={({route}) => ({title: route.params.title})}
               />
               <Stack.Screen
                 name="NewCard"

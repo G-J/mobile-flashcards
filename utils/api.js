@@ -8,14 +8,21 @@ export function getDecks() {
             return decks === null
                 ? setDummyData()
                 : JSON.parse(decks)
-        })
+        });
 }
 
 export function setCard({ card, deck }) {
-    return AsyncStorage.getItem(DECKS_STORAGE_KEY).then((results) => {
-        const decks = results ? JSON.parse(results) : {};
-        decks[deck].questions = decks[deck].questions.concat([card]);
+    return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+        .then((results) => {
+            const object = results ? JSON.parse(results) : {};
+            const decks = {
+                ...object,
+                [deck]: {
+                    ...object[deck],
+                    questions: object[deck].questions.concat([card])
+                }
+            }
 
-        AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks))
-    });
+            return AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks))
+        });
 }

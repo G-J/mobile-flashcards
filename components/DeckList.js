@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardItem, Body, Text, View, Button } from 'native-base';
-import { receiveDecks } from '../actions';
-import { getDecks } from '../utils/api';
+import { Text, View, Button } from 'native-base';
+import { handleInitialData } from '../actions';
 import DeckCard from './DeckCard';
-import { NavigationContainer } from '@react-navigation/native';
 
 class DeckList extends Component {
     componentDidMount() {
-        const { dispatch } = this.props;
-
-        getDecks()
-            .then((decks) => {
-                return dispatch(receiveDecks(decks))
-            })
+        this.props.dispatch(handleInitialData());
     }
 
     onCardPress = (title) => {
-        this.props.navigation.navigate('Deck',{ title });
+        this.props.navigation.navigate('Deck', { title });
     }
 
     render() {
@@ -34,11 +27,11 @@ class DeckList extends Component {
                                 handlePress={this.onCardPress}
                             />
                         ))
-                        : 
+                        :
                         <View>
                             <Text>No decks yet.</Text>
                             <Button
-                                onPress={() => navigation.navigate('NewCard', {title: 'React'})}
+                                onPress={() => navigation.navigate('NewCard', { title: 'React' })}
                             >
                                 <Text>Create one!</Text>
                             </Button>

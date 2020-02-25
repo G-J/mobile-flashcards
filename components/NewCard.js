@@ -37,11 +37,9 @@ class NewCard extends Component {
 
     }
 
-    handleInput = (e) => {
-        e.persist();
-
+    handleInput = (value, name) => {
         this.setState(() => ({
-            [e.target.name]: e.target.value
+            [name]: value
         }));
     }
 
@@ -59,7 +57,7 @@ class NewCard extends Component {
                             numberOfLines={10}
                             name='question'
                             value={question}
-                            onChange={this.handleInput}
+                            onChangeText={(value) => this.handleInput(value, 'question')}
                         />
                     </Item>
                     <Item stackedLabel last>
@@ -69,7 +67,7 @@ class NewCard extends Component {
                             numberOfLines={10}
                             name='answer'
                             value={answer}
-                            onChange={this.handleInput}
+                            onChangeText={(value) => this.handleInput(value, 'answer')}
                         />
                     </Item>
                 </Form>
