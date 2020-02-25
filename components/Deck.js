@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Platform } from 'react-native';
 import { Button, View, Text, Icon } from 'native-base';
 import DeckCard from './DeckCard';
@@ -6,17 +7,28 @@ import { globalStyles } from '../assets/styles/globalStyles';
 
 class Deck extends Component {
     render() {
+        const { decks, title, navigation } = this.props;
+
         return (
             <View>
                 <DeckCard
-                    title="This is the deck title"
-                    total={3}
+                    title={decks[title].title}
+                    total={decks[title].questions.length}
                 />
-                <Button iconRight light style={globalStyles.button}>
+                <Button
+                    iconRight
+                    light
+                    style={globalStyles.button}
+                    onPress={() => navigation.navigate('NewCard', { title })}
+                >
                     <Text>Add card</Text>
                     <Icon name={Platform.OS === 'ios' ? 'ios-add' : 'add'} />
                 </Button>
-                <Button iconRight style={globalStyles.button}>
+                <Button
+                    iconRight
+                    style={globalStyles.button}
+                    onPress={() => navigation.navigate('Quiz', { title })}
+                >
                     <Text>Start Quiz</Text>
                     <Icon name={Platform.OS === 'ios' ? 'ios-play' : 'play'} />
                 </Button>
@@ -25,4 +37,11 @@ class Deck extends Component {
     }
 }
 
-export default Deck;
+function mapStatetoProps(decks, { route: { params: { title } } }) {
+    return {
+        title,
+        decks
+    }
+}
+
+export default connect(mapStatetoProps)(Deck);

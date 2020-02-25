@@ -1,7 +1,11 @@
+import { AsyncStorage } from 'react-native';
+
 export const DECKS_STORAGE_KEY = 'flashin:decks';
 
 export function setDummyData() {
-    return {
+
+
+    const dummyData = {
         React: {
             title: 'React',
             questions: [
@@ -25,4 +29,8 @@ export function setDummyData() {
             ]
         }
     }
+
+    AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(dummyData));
+
+    return dummyData;
 }
