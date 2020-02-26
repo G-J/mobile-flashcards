@@ -23,4 +23,4 @@ Run the project with:
 
 ``$ yarn start``
 
-Scan the QR code in your terminal with the Expo app!
+Scan the QR code in your terminal with the Expo app or use a Android or iOS emulator to open the app.
