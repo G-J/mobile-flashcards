@@ -22,7 +22,6 @@ export function setCard({ card, deck }) {
     return AsyncStorage.getItem(DECKS_STORAGE_KEY)
         .then((results) => {
             const object = results ? JSON.parse(results) : {};
-            console.log(object, deck);
             const decks = {
                 ...object,
                 [deck]: {
