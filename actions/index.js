@@ -19,11 +19,10 @@ function cardAdded({card, deck}) {
     }
 }
 
-function deckAdded(deck, title) {
+function deckAdded(deck) {
     return {
         type: ADD_DECK,
-        deck,
-        title
+        deck
     }
 }
 
@@ -48,8 +47,7 @@ export function addCard({ card, deck }) {
 export function addDeck(title) {
     return (dispatch) => {
         return setDeck(title).then((deck) => {
-            console.log('From promise: ', deck, title);
-            dispatch(deckAdded(deck, title));
+            dispatch(deckAdded(deck));
         })
     }
 }
