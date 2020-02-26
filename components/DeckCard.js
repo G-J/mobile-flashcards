@@ -2,16 +2,10 @@ import React from 'react';
 import { Card, CardItem, Body, Text } from 'native-base';
 
 const DeckCard = (props) => {
-    const { title, total, handlePress } = props;
+    const { title, total } = props;
     return (
         <Card>
             <CardItem
-                button={handlePress ? true : false}
-                onPress={() => {
-                    if(handlePress) {
-                        handlePress(title);
-                    }
-                }}
                 header
             >
                 <Text>{title}</Text>

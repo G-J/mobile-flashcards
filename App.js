@@ -53,20 +53,6 @@ class App extends Component {
             />
           </Stack.Navigator>
         </NavigationContainer>
-        {/* <Footer>
-          <FooterTab>
-            <Button>
-              <Icon name={Platform.OS === 'ios' ? 'ios-home' : 'home'} />
-              <Text>Home</Text>
-            </Button>
-          </FooterTab>
-          <FooterTab>
-            <Button>
-              <Icon name={Platform.OS === 'ios' ? 'ios-add' : 'add'} />
-              <Text>Add Deck</Text>
-            </Button>
-          </FooterTab>
-        </Footer> */}
       </Provider>
     );
   }
